@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EntityDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Congty">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="PhongBan" Relationship="Self.FK__PhongBan__Congty__4BAC3F29" FromRole="Congty" ToRole="PhongBan" />
+  </EntityType>
+  <EntityType Name="NhanVien">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Tuoi" Type="Int32" />
+    <Property Name="GioiTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="PhongBanId" Type="Int32" />
+    <NavigationProperty Name="PhongBan" Relationship="Self.FK__NhanVien__PhongB__4E88ABD4" FromRole="NhanVien" ToRole="PhongBan" />
+  </EntityType>
+  <EntityType Name="PhongBan">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CongtyId" Type="Int32" />
+    <NavigationProperty Name="Congty" Relationship="Self.FK__PhongBan__Congty__4BAC3F29" FromRole="PhongBan" ToRole="Congty" />
+    <NavigationProperty Name="NhanVien" Relationship="Self.FK__NhanVien__PhongB__4E88ABD4" FromRole="PhongBan" ToRole="NhanVien" />
+  </EntityType>
+  <Association Name="FK__PhongBan__Congty__4BAC3F29">
+    <End Role="Congty" Type="Self.Congty" Multiplicity="0..1" />
+    <End Role="PhongBan" Type="Self.PhongBan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Congty">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PhongBan">
+        <PropertyRef Name="CongtyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__NhanVien__PhongB__4E88ABD4">
+    <End Role="PhongBan" Type="Self.PhongBan" Multiplicity="0..1" />
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhongBan">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NhanVien">
+        <PropertyRef Name="PhongBanId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EntityDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Congty" EntityType="Self.Congty" />
+    <EntitySet Name="NhanVien" EntityType="Self.NhanVien" />
+    <EntitySet Name="PhongBan" EntityType="Self.PhongBan" />
+    <AssociationSet Name="FK__PhongBan__Congty__4BAC3F29" Association="Self.FK__PhongBan__Congty__4BAC3F29">
+      <End Role="Congty" EntitySet="Congty" />
+      <End Role="PhongBan" EntitySet="PhongBan" />
+    </AssociationSet>
+    <AssociationSet Name="FK__NhanVien__PhongB__4E88ABD4" Association="Self.FK__NhanVien__PhongB__4E88ABD4">
+      <End Role="PhongBan" EntitySet="PhongBan" />
+      <End Role="NhanVien" EntitySet="NhanVien" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

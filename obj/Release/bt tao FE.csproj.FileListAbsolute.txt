@@ -1,0 +1,2 @@
+D:\bt tao FE\obj\Release\bt tao FE.csproj.AssemblyReference.cache
+D:\bt tao FE\obj\Release\bt tao FE.csproj.CoreCompileInputs.cache

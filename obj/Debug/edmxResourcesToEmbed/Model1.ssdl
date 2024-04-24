@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EntityDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Congty">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NhanVien">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Tuoi" Type="int" />
+    <Property Name="GioiTinh" Type="nvarchar" MaxLength="10" />
+    <Property Name="PhongBanId" Type="int" />
+  </EntityType>
+  <EntityType Name="PhongBan">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="CongtyId" Type="int" />
+  </EntityType>
+  <Association Name="FK__NhanVien__PhongB__4E88ABD4">
+    <End Role="PhongBan" Type="Self.PhongBan" Multiplicity="0..1" />
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhongBan">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NhanVien">
+        <PropertyRef Name="PhongBanId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PhongBan__Congty__4BAC3F29">
+    <End Role="Congty" Type="Self.Congty" Multiplicity="0..1" />
+    <End Role="PhongBan" Type="Self.PhongBan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Congty">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PhongBan">
+        <PropertyRef Name="CongtyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EntityDBModelStoreContainer">
+    <EntitySet Name="Congty" EntityType="Self.Congty" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhongBan" EntityType="Self.PhongBan" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__NhanVien__PhongB__4E88ABD4" Association="Self.FK__NhanVien__PhongB__4E88ABD4">
+      <End Role="PhongBan" EntitySet="PhongBan" />
+      <End Role="NhanVien" EntitySet="NhanVien" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PhongBan__Congty__4BAC3F29" Association="Self.FK__PhongBan__Congty__4BAC3F29">
+      <End Role="Congty" EntitySet="Congty" />
+      <End Role="PhongBan" EntitySet="PhongBan" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

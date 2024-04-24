@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EntityDBModelStoreContainer" CdmEntityContainer="EntityDBEntities">
+    <EntitySetMapping Name="Congty">
+      <EntityTypeMapping TypeName="EntityDBModel.Congty">
+        <MappingFragment StoreEntitySet="Congty">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NhanVien">
+      <EntityTypeMapping TypeName="EntityDBModel.NhanVien">
+        <MappingFragment StoreEntitySet="NhanVien">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
+          <ScalarProperty Name="Tuoi" ColumnName="Tuoi" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+          <ScalarProperty Name="PhongBanId" ColumnName="PhongBanId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhongBan">
+      <EntityTypeMapping TypeName="EntityDBModel.PhongBan">
+        <MappingFragment StoreEntitySet="PhongBan">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
+          <ScalarProperty Name="CongtyId" ColumnName="CongtyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
